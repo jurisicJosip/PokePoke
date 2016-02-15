@@ -1,4 +1,4 @@
-package com.jjurisic.android.poke.api.ui.main;
+package com.jjurisic.android.poke.ui.base;
 
 import android.support.annotation.NonNull;
 

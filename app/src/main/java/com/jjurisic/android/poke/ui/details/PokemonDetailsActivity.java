@@ -1,4 +1,4 @@
-package com.jjurisic.android.poke.api.ui.details;
+package com.jjurisic.android.poke.ui.details;
 
 
 import android.content.Context;
@@ -7,8 +7,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 
 import com.jjurisic.android.poke.R;
-import com.jjurisic.android.poke.api.AppComponent;
-import com.jjurisic.android.poke.api.ui.base.BaseActivity;
+import com.jjurisic.android.poke.AppComponent;
+import com.jjurisic.android.poke.ui.base.BaseActivity;
 
 /**
  * Created by jurisicJosip.

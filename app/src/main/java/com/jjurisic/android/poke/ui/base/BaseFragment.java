@@ -1,12 +1,12 @@
-package com.jjurisic.android.poke.api.ui.base;
+package com.jjurisic.android.poke.ui.base;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
-import com.jjurisic.android.poke.api.App;
-import com.jjurisic.android.poke.api.AppComponent;
+import com.jjurisic.android.poke.App;
+import com.jjurisic.android.poke.AppComponent;
 
 
 /**

@@ -18,7 +18,7 @@
  *
  */
 
-package com.jjurisic.android.poke.api;
+package com.jjurisic.android.poke;
 
 import android.app.Application;
 

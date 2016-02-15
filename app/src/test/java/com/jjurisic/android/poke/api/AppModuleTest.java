@@ -2,6 +2,8 @@ package com.jjurisic.android.poke.api;
 
 import android.app.Application;
 
+import com.jjurisic.android.poke.AppModule;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;

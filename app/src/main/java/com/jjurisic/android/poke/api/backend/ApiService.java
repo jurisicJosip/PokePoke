@@ -1,8 +1,9 @@
 package com.jjurisic.android.poke.api.backend;
 
 
-import com.jjurisic.android.poke.api.data.Pokedex;
 import com.jjurisic.android.poke.api.data.Pokemon;
+
+import java.util.List;
 
 import retrofit.http.GET;
 import retrofit.http.Path;
@@ -13,10 +14,10 @@ import rx.Observable;
  */
 public interface ApiService {
 
-    @GET("/")
-    Observable<Pokedex> requestPokedex();
+    @GET("/pokemon")
+    Observable<List<Pokemon>> requestPokedex();
 
 
-    @GET("/{id}")
+    @GET("/pokemon/{id}")
     Observable<Pokemon> requestPokemon(@Path("id") long id);
 }
