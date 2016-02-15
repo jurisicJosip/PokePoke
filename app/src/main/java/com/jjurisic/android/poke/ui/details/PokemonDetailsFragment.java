@@ -122,7 +122,7 @@ public class PokemonDetailsFragment extends BaseFragment {
 
     @Override
     protected void prepareData() {
-        pokeModel.getPokemon(pokemonId)
+        pokeModel.getPokemon(App.get().component().getApiService(), pokemonId)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Observer<Pokemon>() {

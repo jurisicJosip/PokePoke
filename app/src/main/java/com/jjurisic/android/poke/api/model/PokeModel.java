@@ -1,5 +1,6 @@
 package com.jjurisic.android.poke.api.model;
 
+import com.jjurisic.android.poke.api.backend.ApiService;
 import com.jjurisic.android.poke.api.data.Pokemon;
 import com.jjurisic.android.poke.api.interactor.PokeInteractor;
 
@@ -18,11 +19,11 @@ public class PokeModel {
         this.pokeInteractor = pokeInteractor;
     }
 
-    public Observable<List<Pokemon>> getPokedex() {
-        return pokeInteractor.requestPokedex();
+    public Observable<List<Pokemon>> getPokedex(ApiService apiService) {
+        return pokeInteractor.requestPokedex(apiService);
     }
 
-    public Observable<Pokemon> getPokemon(long id) {
-        return pokeInteractor.requestPokemon(id);
+    public Observable<Pokemon> getPokemon(ApiService apiService, long id) {
+        return pokeInteractor.requestPokemon(apiService, id);
     }
 }

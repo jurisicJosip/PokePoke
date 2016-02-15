@@ -1,5 +1,6 @@
 package com.jjurisic.android.poke.api.model;
 
+import com.jjurisic.android.poke.api.backend.ApiService;
 import com.jjurisic.android.poke.api.interactor.PokeInteractor;
 
 import org.junit.Before;
@@ -19,6 +20,9 @@ public class PokeModelTest {
     @Mock
     PokeInteractor pokeInteractor;
 
+    @Mock
+    ApiService apiService;
+
     private PokeModel pokeModel;
 
     @Before
@@ -28,14 +32,14 @@ public class PokeModelTest {
     }
 
     @Test
-    public void testGetPokedex() throws Exception {
-        pokeModel.getPokedex();
-        verify(pokeInteractor).requestPokedex();
+    public void testGetPokedex() {
+        pokeModel.getPokedex(apiService);
+        verify(pokeInteractor).requestPokedex(apiService);
     }
 
     @Test
-    public void testGetPokemon() throws Exception {
-        pokeModel.getPokemon(POKEMON_ID);
-        verify(pokeInteractor).requestPokemon(POKEMON_ID);
+    public void testGetPokemon() {
+        pokeModel.getPokemon(apiService, POKEMON_ID);
+        verify(pokeInteractor).requestPokemon(apiService, POKEMON_ID);
     }
 }

@@ -72,7 +72,7 @@ public class MainActivity extends BaseActivity {
     }
 
     private void requestPokemons() {
-        pokeModel.getPokedex()
+        pokeModel.getPokedex(App.get().component().getApiService())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Observer<List<Pokemon>>() {
