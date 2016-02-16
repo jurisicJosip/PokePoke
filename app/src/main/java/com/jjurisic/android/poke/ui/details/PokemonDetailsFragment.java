@@ -53,9 +53,9 @@ public class PokemonDetailsFragment extends BaseFragment {
     @Inject
     PokeModel pokeModel;
 
-    public static BaseFragment newInstance(long movieId) {
+    public static BaseFragment newInstance(long pokemonId) {
         Bundle b = new Bundle();
-        b.putLong(KEY_POKEMON_ID, movieId);
+        b.putLong(KEY_POKEMON_ID, pokemonId);
         PokemonDetailsFragment f = new PokemonDetailsFragment();
         f.setArguments(b);
         return f;

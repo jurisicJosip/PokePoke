@@ -57,7 +57,7 @@ public class ApiModuleUnitTest {
     }
 
     @Test
-    public void testProvideMoviesApiService() {
+    public void testProvideApiService() {
         RestAdapter adapter = apiModule.provideRestAdapter(Mockito.mock(Endpoint.class), Mockito.mock(GsonConverter.class), Mockito.mock(OkClient.class));
         assertNotNull(adapter);
     }
