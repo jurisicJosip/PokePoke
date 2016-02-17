@@ -6,15 +6,15 @@
     <data>
 
         <variable
-            name="pokemonViewModel"
-            type="com.jjurisic.android.poke.ui.main.PokemonViewModel" />
+            name="pokemonListViewModel"
+            type="com.jjurisic.android.poke.ui.main.PokemonListViewModel" />
     </data>
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_margin="@dimen/xsmall"
-        android:onClick="@{pokemonViewModel.onPokemonClick()}"
+        android:onClick="@{pokemonListViewModel.onPokemonClick()}"
         android:orientation="vertical"
         card_view:cardBackgroundColor="@color/white"
         card_view:cardCornerRadius="0dp"
@@ -34,7 +34,7 @@
                 android:layout_height="wrap_content"
                 android:maxLines="2"
                 android:padding="@dimen/small"
-                android:text="@{pokemonViewModel.pokemonName}"
+                android:text="@{pokemonListViewModel.pokemonName}"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 tools:text="TEXT" />

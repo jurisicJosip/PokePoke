@@ -18,9 +18,10 @@
  *
  */
 
-package com.jjurisic.android.poke.api.model;
+package com.jjurisic.android.poke.api.data;
 
 
+import com.jjurisic.android.poke.App;
 import com.jjurisic.android.poke.api.interactor.PokeInteractor;
 import com.jjurisic.android.poke.api.interactor.PokeInteractorImpl;
 
@@ -32,11 +33,11 @@ public class PokeModule {
 
     @Provides
     public PokeInteractor providePokeInteractor() {
-        return new PokeInteractorImpl();
+        return new PokeInteractorImpl(App.get().component().getApiService());
     }
 
     @Provides
-    public PokeModel providePokeModel(PokeInteractor pokeInteractor) {
-        return new PokeModel(pokeInteractor);
+    public DataManager providePokeModel(PokeInteractor pokeInteractor) {
+        return new DataManager(pokeInteractor);
     }
 }

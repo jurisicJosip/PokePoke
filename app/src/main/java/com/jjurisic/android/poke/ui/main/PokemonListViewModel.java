@@ -1,21 +1,20 @@
 package com.jjurisic.android.poke.ui.main;
 
 import android.content.Context;
-import android.databinding.BaseObservable;
 import android.view.View;
 
-import com.jjurisic.android.poke.api.data.Pokemon;
+import com.jjurisic.android.poke.api.model.Pokemon;
 import com.jjurisic.android.poke.ui.details.PokemonDetailsActivity;
 
 /**
  * Created by Josip Jurisic
  */
-public class PokemonViewModel extends BaseObservable {
+public class PokemonListViewModel {
 
     private Context context;
     private Pokemon pokemon;
 
-    public PokemonViewModel(Context context, Pokemon pokemon) {
+    public PokemonListViewModel(Context context, Pokemon pokemon) {
         this.context = context;
         this.pokemon = pokemon;
     }

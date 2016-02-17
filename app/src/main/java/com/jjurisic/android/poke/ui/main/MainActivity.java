@@ -10,10 +10,11 @@ import android.widget.Toast;
 import com.jjurisic.android.poke.App;
 import com.jjurisic.android.poke.AppComponent;
 import com.jjurisic.android.poke.R;
-import com.jjurisic.android.poke.api.data.Pokemon;
-import com.jjurisic.android.poke.api.model.DaggerPokeComponent;
-import com.jjurisic.android.poke.api.model.PokeModel;
-import com.jjurisic.android.poke.api.model.PokeModule;
+import com.jjurisic.android.poke.api.backend.ResponseListener;
+import com.jjurisic.android.poke.api.data.DaggerPokeComponent;
+import com.jjurisic.android.poke.api.data.DataManager;
+import com.jjurisic.android.poke.api.data.PokeModule;
+import com.jjurisic.android.poke.api.model.Pokemon;
 import com.jjurisic.android.poke.ui.base.BaseActivity;
 
 import java.util.List;
@@ -22,14 +23,11 @@ import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import rx.Observer;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by jurisicJosip.
  */
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements ResponseListener<List<Pokemon>> {
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
@@ -38,7 +36,7 @@ public class MainActivity extends BaseActivity {
     RecyclerView recyclerView;
 
     @Inject
-    PokeModel pokeModel;
+    DataManager dataManager;
 
     private PokemonListAdapter adapter;
 
@@ -49,7 +47,6 @@ public class MainActivity extends BaseActivity {
         ButterKnife.bind(this);
 
         initUi();
-
         requestPokemons();
     }
 
@@ -72,24 +69,16 @@ public class MainActivity extends BaseActivity {
     }
 
     private void requestPokemons() {
-        pokeModel.getPokedex(App.get().component().getApiService())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .subscribe(new Observer<List<Pokemon>>() {
-                    @Override
-                    public void onCompleted() {
+        dataManager.getPokedex(this);
+    }
 
-                    }
+    @Override
+    public void onResponse(List<Pokemon> data) {
+        adapter.setData(data);
+    }
 
-                    @Override
-                    public void onError(Throwable e) {
-                        Toast.makeText(App.get(), e.getMessage(), Toast.LENGTH_LONG).show();
-                    }
-
-                    @Override
-                    public void onNext(List<Pokemon> pokemons) {
-                        adapter.setData(pokemons);
-                    }
-                });
+    @Override
+    public void onError(Object error) {
+        Toast.makeText(App.get(), error.toString(), Toast.LENGTH_LONG).show();
     }
 }

@@ -1,5 +1,6 @@
 package com.jjurisic.android.poke.api.model;
 
+import com.jjurisic.android.poke.api.data.PokeModule;
 import com.jjurisic.android.poke.api.interactor.PokeInteractor;
 
 import org.junit.Before;
@@ -18,11 +19,6 @@ public class PokeModuleTest {
     @Before
     public void init() {
         pokeModule = new PokeModule();
-    }
-
-    @Test
-    public void testProvidePokeInteractor() throws Exception {
-        assertNotNull(pokeModule.providePokeInteractor());
     }
 
     @Test

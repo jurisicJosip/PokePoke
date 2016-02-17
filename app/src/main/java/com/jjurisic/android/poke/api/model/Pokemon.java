@@ -1,7 +1,8 @@
-package com.jjurisic.android.poke.api.data;
+package com.jjurisic.android.poke.api.model;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
+import android.support.annotation.VisibleForTesting;
 import android.text.TextUtils;
 
 /**
@@ -23,6 +24,11 @@ public class Pokemon extends BaseObservable {
 
     @Bindable
     private int width;
+
+    @VisibleForTesting
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public int getId() {
         try {

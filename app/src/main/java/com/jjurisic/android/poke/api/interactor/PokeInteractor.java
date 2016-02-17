@@ -1,7 +1,6 @@
 package com.jjurisic.android.poke.api.interactor;
 
-import com.jjurisic.android.poke.api.backend.ApiService;
-import com.jjurisic.android.poke.api.data.Pokemon;
+import com.jjurisic.android.poke.api.model.Pokemon;
 
 import java.util.List;
 
@@ -12,8 +11,8 @@ import rx.Observable;
  */
 public interface PokeInteractor {
 
-    Observable<List<Pokemon>> requestPokedex(ApiService apiService);
+    Observable<List<Pokemon>> requestPokedex();
 
-    Observable<Pokemon> requestPokemon(ApiService apiService, long id);
+    Observable<Pokemon> requestPokemon(long id);
 
 }

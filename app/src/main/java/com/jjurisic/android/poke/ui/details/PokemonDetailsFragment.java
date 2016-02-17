@@ -18,10 +18,11 @@ import android.widget.Toast;
 import com.jjurisic.android.poke.App;
 import com.jjurisic.android.poke.AppComponent;
 import com.jjurisic.android.poke.R;
-import com.jjurisic.android.poke.api.data.Pokemon;
-import com.jjurisic.android.poke.api.model.DaggerPokeComponent;
-import com.jjurisic.android.poke.api.model.PokeModel;
-import com.jjurisic.android.poke.api.model.PokeModule;
+import com.jjurisic.android.poke.api.backend.ResponseListener;
+import com.jjurisic.android.poke.api.data.DaggerPokeComponent;
+import com.jjurisic.android.poke.api.data.DataManager;
+import com.jjurisic.android.poke.api.data.PokeModule;
+import com.jjurisic.android.poke.api.model.Pokemon;
 import com.jjurisic.android.poke.databinding.FragmentPokemonDetailsBinding;
 import com.jjurisic.android.poke.ui.base.BaseFragment;
 
@@ -29,14 +30,11 @@ import javax.inject.Inject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import rx.Observer;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by jurisicJosip.
  */
-public class PokemonDetailsFragment extends BaseFragment {
+public class PokemonDetailsFragment extends BaseFragment implements ResponseListener<Pokemon> {
 
     //Bundle keys
     private static final String KEY_POKEMON_ID = "key_pokemon_id";
@@ -51,7 +49,7 @@ public class PokemonDetailsFragment extends BaseFragment {
     private long pokemonId;
 
     @Inject
-    PokeModel pokeModel;
+    DataManager dataManager;
 
     public static BaseFragment newInstance(long pokemonId) {
         Bundle b = new Bundle();
@@ -122,24 +120,16 @@ public class PokemonDetailsFragment extends BaseFragment {
 
     @Override
     protected void prepareData() {
-        pokeModel.getPokemon(App.get().component().getApiService(), pokemonId)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .subscribe(new Observer<Pokemon>() {
-                    @Override
-                    public void onCompleted() {
+        dataManager.getPokemon(pokemonId, this);
+    }
 
-                    }
+    @Override
+    public void onResponse(Pokemon data) {
+        binding.setPokemonDetailsViewModel(new PokemonDetailsViewModel(data));
+    }
 
-                    @Override
-                    public void onError(Throwable e) {
-                        Toast.makeText(App.get(), e.getMessage(), Toast.LENGTH_LONG).show();
-                    }
-
-                    @Override
-                    public void onNext(Pokemon pokemon) {
-                        binding.setPokemonDetailsViewModel(new PokemonDetailsViewModel(pokemon));
-                    }
-                });
+    @Override
+    public void onError(Object error) {
+        Toast.makeText(App.get(), error.toString(), Toast.LENGTH_LONG).show();
     }
 }

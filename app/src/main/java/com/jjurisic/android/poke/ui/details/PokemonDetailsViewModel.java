@@ -1,6 +1,6 @@
 package com.jjurisic.android.poke.ui.details;
 
-import com.jjurisic.android.poke.api.data.Pokemon;
+import com.jjurisic.android.poke.api.model.Pokemon;
 
 /**
  * Created by Josip Jurisic

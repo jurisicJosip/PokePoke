@@ -1,4 +1,4 @@
-package com.jjurisic.android.poke.api.model;
+package com.jjurisic.android.poke.api.data;
 
 
 import com.jjurisic.android.poke.AppComponent;

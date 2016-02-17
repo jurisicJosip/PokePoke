@@ -23,18 +23,18 @@ public class PokeInteractorImplTest {
     @Before
     public void init() {
         MockitoAnnotations.initMocks(this);
-        pokeInteractor = new PokeInteractorImpl();
+        pokeInteractor = new PokeInteractorImpl(apiService);
     }
 
     @Test
     public void testRequestPokedex() {
-        pokeInteractor.requestPokedex(apiService);
+        pokeInteractor.requestPokedex();
         verify(apiService).requestPokedex();
     }
 
     @Test
     public void testRequestPokemon() {
-        pokeInteractor.requestPokemon(apiService, POKEMON_ID);
+        pokeInteractor.requestPokemon(POKEMON_ID);
         verify(apiService).requestPokemon(POKEMON_ID);
     }
 }

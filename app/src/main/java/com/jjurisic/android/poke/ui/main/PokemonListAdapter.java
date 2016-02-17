@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.jjurisic.android.poke.R;
-import com.jjurisic.android.poke.api.data.Pokemon;
+import com.jjurisic.android.poke.api.model.Pokemon;
 import com.jjurisic.android.poke.databinding.ListItemPokemonBinding;
 
 import java.util.ArrayList;
@@ -40,7 +40,7 @@ public class PokemonListAdapter extends RecyclerView.Adapter<PokemonListAdapter.
     public void onBindViewHolder(PokemonListAdapter.BindingHolder holder, int position) {
         Pokemon pokemon = mDataSource.get(position);
         ListItemPokemonBinding viewDataBinding = (ListItemPokemonBinding) holder.binding;
-        viewDataBinding.setPokemonViewModel(new PokemonViewModel(holder.getContext(), pokemon));
+        viewDataBinding.setPokemonListViewModel(new PokemonListViewModel(holder.getContext(), pokemon));
     }
 
     @Override

@@ -1,7 +1,7 @@
 package com.jjurisic.android.poke.api.backend;
 
 
-import com.jjurisic.android.poke.api.data.Pokemon;
+import com.jjurisic.android.poke.api.model.Pokemon;
 
 import java.util.List;
 

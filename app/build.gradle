@@ -27,6 +27,10 @@ android {
         enabled = true
     }
 
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+
     buildTypes {
         debug {
             applicationIdSuffix '.debug'
